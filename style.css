@@ -167,6 +167,7 @@ aside h2 {
 }
 
 .card-aside img {
+  width: min(15.1rem, 100%);
   object-fit: contain;
   border-radius: 5px;
 }
