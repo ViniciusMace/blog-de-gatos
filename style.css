@@ -1,0 +1,313 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  font-size: 62.5%;
+
+  --color-base-white: #fff;
+
+  --color-base-primary: #065e7c;
+  --color-background-input: rgba(255, 255, 255, 0.2);
+
+  --color-title: #202024;
+  --color-p: #121214;
+}
+
+body,
+html,
+input {
+  font-family: "Mulish", sans-serif;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+#app {
+  height: 100vh;
+}
+
+/* Header */
+header {
+  display: flex;
+  gap: 2.4rem;
+
+  align-items: center;
+
+  height: 7.2rem;
+  padding: 1.2rem 2.8rem;
+
+  background-color: var(--color-base-primary);
+}
+
+.logo,
+.avatar,
+.button-wrapper button {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+.logo {
+  background-color: var(--color-base-white);
+  padding: 0.8rem;
+}
+
+form {
+  flex: 1;
+}
+
+.input-wrapper label {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  opacity: 0;
+}
+
+.input-wrapper input {
+  width: 100%;
+
+  padding: 1.2rem 1.6rem;
+  border: 0;
+
+  border-radius: 4px;
+  background: var(--color-background-input);
+}
+
+.input-wrapper input,
+input::placeholder {
+  color: var(--color-base-white);
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 100%;
+}
+
+/* Main */
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  margin-bottom: 4rem;
+}
+
+figure img {
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: 16/9;
+  display: block;
+  border-radius: 0.5rem;
+}
+
+section,
+aside {
+  padding: 0 2.2rem;
+}
+
+.title-post-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 3.2rem;
+}
+
+.title-post-section h1 {
+  color: var(--color-title);
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 160%;
+}
+
+.button-wrapper {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.button-wrapper button {
+  background: var(--color-base-primary);
+  padding: 1.2rem;
+  border: 0;
+
+  cursor: pointer;
+}
+
+section p {
+  color: var(--color-p);
+  line-height: 160%;
+}
+
+section p + p {
+  margin-top: 2.5rem;
+}
+
+/* aside */
+
+aside {
+  width: min(75rem, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+aside h2 {
+  color: var(--color-title);
+  font-weight: 700;
+  /* line-height: 160%; */
+}
+
+.card-aside {
+  display: flex;
+  gap: 1.6rem;
+}
+
+.card-aside img {
+  object-fit: contain;
+  border-radius: 5px;
+}
+
+.details-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.details-card a {
+  color: var(--color-title);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.details-card a:hover {
+  color: var(--color-base-primary);
+}
+
+.details-card p {
+  color: var(--color-p);
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+footer {
+  margin-top: 4rem;
+  display: flex;
+  background: var(--color-base-primary);
+  padding: 1.6rem;
+  justify-content: center;
+  align-items: center;
+}
+
+footer p {
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
+}
+
+@media (max-width: 400px) {
+  .card-aside img {
+    display: none;
+  }
+}
+
+@media (min-width: 630px) {
+  .title-post-section {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 1115px) {
+  #app {
+    width: 100%;
+    display: grid;
+
+    grid-template-areas:
+      "header header"
+      "main aside"
+      "footer footer";
+
+    grid-template-rows: max-content 1fr max-content;
+    grid-template-columns: 70% 30%;
+  }
+
+  header {
+    grid-area: header;
+    padding-inline: 11rem;
+  }
+
+  .logo,
+  .avatar,
+  .button-wrapper button {
+    width: 4.2rem;
+    height: 4.2rem;
+    border-radius: 50%;
+  }
+
+  main {
+    grid-area: main;
+    margin-right: 3.4rem;
+    padding-left: 11rem;
+  }
+
+  main,
+  aside {
+    margin-top: 4.4rem;
+  }
+
+  section,
+  aside {
+    padding: 0;
+  }
+
+  aside {
+    grid-area: aside;
+    width: min(38.2rem, 100%);
+    padding-right: 0.5rem;
+    height: fit-content;
+  }
+
+  footer {
+    grid-area: footer;
+  }
+}
+
+/* Animation */
+
+.card-aside {
+  --delay: 0.4s;
+  animation-name: appear;
+  animation-duration: 1s;
+  animation-delay: var(--delay);
+  animation-fill-mode: backwards;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+}
+
+.like:hover {
+  animation-name: scale;
+  animation-duration: 1s;
+  animation-fill-mode: backwards;
+  background-color: green;
+}
+
+.dislike:hover {
+  animation-name: scale;
+  animation-duration: 1s;
+  animation-fill-mode: backwards;
+  background-color: red;
+}
+
+@keyframes scale {
+  50% {
+    transform: scale(1.3);
+  }
+}
